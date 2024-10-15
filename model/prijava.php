@@ -38,6 +38,30 @@ class Prijava{
         return $konekcija->query($upit);
 
     }
+    public static function getById($id, mysqli $konekcija){
+        $upit="SELECT *
+                FROM prijave
+                WHERE id=$id";
+                
+        $rezultat=$konekcija->query($upit);
+        if ($red = $rezultat->fetch_assoc()) {//$red je red dobijen upitom u obliku asoc niza
+            return new Prijava($id, $red['predmet'], $red['katedra'], $red['sala'], $red['datum']);//pravimo i vracamo
+                                                                                         //novu prijavu sa dodeljenim vrednostima iz niza
+            
+        }
+
+       return  null;
+    }
+ 
+    public static function update(Prijava $prijava, mysqli $konekcija){
+        $upit="UPDATE prijave
+                SET predmet = '$prijava->predmet', 
+                 katedra = '$prijava->katedra', 
+                 sala = '$prijava->sala', 
+                 datum = '$prijava->datum'
+             WHERE id=$prijava->id"; 
+        return $konekcija->query($upit);
+    }
 
 }
 

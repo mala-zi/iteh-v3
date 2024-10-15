@@ -145,7 +145,7 @@ $result = Prijava::read($conn);
                         <h3 class="modal-title text-center">Izmeni kolokvijum</h3>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="post" id="izmeniForm">
+                        <form action="obrada.php" method="post" id="izmeniForm">
                             <input id="id_predmeta" type="hidden" name="id_predmeta" readonly>
                             <div class="form-group">
                                 <label>Predmet</label>
